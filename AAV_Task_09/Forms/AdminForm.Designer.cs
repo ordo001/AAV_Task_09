@@ -42,8 +42,15 @@ namespace AAV_Task_09
             this.comboBoxSort = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxDesc = new System.Windows.Forms.TextBox();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -54,7 +61,7 @@ namespace AAV_Task_09
             this.statusStrip1.Location = new System.Drawing.Point(0, 563);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(933, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1214, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -150,6 +157,7 @@ namespace AAV_Task_09
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(933, 395);
             this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // comboBoxCategory
             // 
@@ -160,11 +168,60 @@ namespace AAV_Task_09
             this.comboBoxCategory.TabIndex = 10;
             this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBoxDesc);
+            this.panel1.Controls.Add(this.labelPrice);
+            this.panel1.Controls.Add(this.labelName);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(939, 156);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(263, 395);
+            this.panel1.TabIndex = 11;
+            this.panel1.Visible = false;
+            // 
+            // textBoxDesc
+            // 
+            this.textBoxDesc.Location = new System.Drawing.Point(20, 269);
+            this.textBoxDesc.Multiline = true;
+            this.textBoxDesc.Name = "textBoxDesc";
+            this.textBoxDesc.ReadOnly = true;
+            this.textBoxDesc.Size = new System.Drawing.Size(224, 102);
+            this.textBoxDesc.TabIndex = 3;
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Location = new System.Drawing.Point(20, 239);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(38, 15);
+            this.labelPrice.TabIndex = 2;
+            this.labelPrice.Text = "label5";
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(20, 207);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(38, 15);
+            this.labelName.TabIndex = 1;
+            this.labelName.Text = "label5";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(20, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(224, 172);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 585);
+            this.ClientSize = new System.Drawing.Size(1214, 585);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBoxSort);
@@ -182,6 +239,9 @@ namespace AAV_Task_09
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,5 +261,10 @@ namespace AAV_Task_09
         private System.Windows.Forms.ComboBox comboBoxSort;
         private System.Windows.Forms.DataGridView dataGridView1;
         private ComboBox comboBoxCategory;
+        private Panel panel1;
+        private TextBox textBoxDesc;
+        private Label labelPrice;
+        private Label labelName;
+        private PictureBox pictureBox1;
     }
 }

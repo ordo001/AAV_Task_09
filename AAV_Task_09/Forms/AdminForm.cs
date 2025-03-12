@@ -46,6 +46,7 @@ namespace AAV_Task_09
                 .Include(g => g.Category)
                 .Select(g => new
                 {
+                    Id = g.Id,
                     Name = g.GoodName,
                     Price = g.Price,
                     //Image = g.Picture,
@@ -65,6 +66,7 @@ namespace AAV_Task_09
                 .Include(g => g.Category)
                 .Select(g => new
                 {
+                    Id = g.Id,
                     Name = g.GoodName,
                     Price = g.Price,
                     //Image = g.Picture,
@@ -89,9 +91,10 @@ namespace AAV_Task_09
 
         private static System.Drawing.Image? ConvertByteArrayToImage(byte[]? byteArray)
         {
-            if (byteArray == null || byteArray.Length == 0)
+            if (byteArray == null)
             {
-                throw new ArgumentException("Массив байтов пуст или null.");
+                //throw new ArgumentException("Массив байтов пуст или null.");
+                return null;
             }
 
             try
@@ -108,11 +111,12 @@ namespace AAV_Task_09
 
         private void UpdateColumns()
         {
-            dataGridView1.Columns[0].HeaderText = "Название товара";
-            dataGridView1.Columns[1].HeaderText = "Цена";
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].HeaderText = "Название товара";
+            dataGridView1.Columns[2].HeaderText = "Цена";
             //dataGridView1.Columns[2].HeaderText = "Изображение";
-            dataGridView1.Columns[2].HeaderText = "Описание";
-            dataGridView1.Columns[3].HeaderText = "Категория";
+            dataGridView1.Columns[3].HeaderText = "Описание";
+            dataGridView1.Columns[4].HeaderText = "Категория";
         }
 
         private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,6 +138,25 @@ namespace AAV_Task_09
         {
             var addForm = new AddGoodForm(this);
             addForm.ShowDialog();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            panel1.Visible = true;
+            using ShopDbContext dbContext = new ShopDbContext();
+
+            int selectedIndex = dataGridView1.Rows[e.RowIndex].Index;
+
+            var selectedGood = dbContext.Goods.FirstOrDefault(g => g.Id == (int)dataGridView1.Rows[selectedIndex].Cells[0].Value);
+
+            if(selectedGood != null)
+            {
+                labelName.Text = selectedGood.GoodName;
+                labelPrice.Text = selectedGood.Price.ToString();
+                textBoxDesc.Text = selectedGood.Description;
+                pictureBox1.Image = ConvertByteArrayToImage(selectedGood.Picture);
+
+            }
         }
 
 
